@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pomoflow/app/routes/app_pages.dart';
 import 'package:pomoflow/app/ui/widgets/custom_text_field.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_background_widget.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_text_widget.dart';
 import 'package:pomoflow/app/utils/app_validators.dart';
-import 'package:pomoflow/features/auth/controllers/auth_controller.dart';
+import 'package:pomoflow/features/forgot/controllers/forgot_controller.dart';
 
-class AuthScreen extends StatelessWidget {
-  const AuthScreen({super.key});
+class ForgotScreen extends StatelessWidget {
+  const ForgotScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<AuthController>();
+    final controller = Get.find<ForgotController>();
     final theme = Theme.of(context);
 
     return GradientBackgroundWidget(
@@ -46,7 +45,7 @@ class AuthScreen extends StatelessWidget {
     return Image.asset('assets/images/img-logotipo.png', height: 45);
   }
 
-  Widget _buildForm(AuthController controller, ThemeData theme) {
+  Widget _buildForm(ForgotController controller, ThemeData theme) {
     return Form(
       key: controller.formKey,
       child: Column(
@@ -63,10 +62,10 @@ class AuthScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  GradientTextWidget(text: 'Seja ', gradientText: 'bem-vindo!'),
+                  GradientTextWidget(text: 'Recuperar ', gradientText: 'Senha'),
                   SizedBox(height: 16),
                   Text(
-                    'Faça login para sincronizar suas tarefas e seu progresso.',
+                    'Digite seu e-mail abaixo para receber um link de redefinição de senha.',
                     style: theme.textTheme.bodyMedium,
                   ),
                   SizedBox(height: 32),
@@ -78,43 +77,20 @@ class AuthScreen extends StatelessWidget {
                     keyboardType: TextInputType.emailAddress,
                     validator: AppValidators.email,
                   ),
-                  const SizedBox(height: 16),
-                  Obx(
-                    () => CustomTextField(
-                      controller: controller.passwordController,
-                      labelText: 'Senha',
-                      hintText: '********',
-                      prefixIcon: Icons.lock_outline,
-                      isPassword: controller.isPasswordHidden.value,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          controller.isPasswordHidden.value
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                        ),
-                        onPressed: controller.togglePasswordVisibility,
-                      ),
-                      validator: AppValidators.password,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
-                      child: const Text('Esqueceu a senha?'),
-                    ),
-                  ),
+
                   const SizedBox(height: 16),
                   Obx(
                     () => ElevatedButton(
-                      onPressed: controller.isLoading.value ? null : controller.signInWithEmail,
+                      onPressed: controller.isLoading.value
+                          ? null
+                          : controller.sendPasswordResetEmail,
                       child: controller.isLoading.value
                           ? const SizedBox(
                               height: 24,
                               width: 24,
                               child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                             )
-                          : const Text('Entrar'),
+                          : const Text('Recuperar'),
                     ),
                   ),
                 ],
@@ -130,8 +106,8 @@ class AuthScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Não tem uma conta?', style: theme.textTheme.bodyMedium),
-        TextButton(onPressed: () {}, child: const Text('Crie uma agora')),
+        Text('Lembrou sua senha?', style: theme.textTheme.bodyMedium),
+        TextButton(onPressed: Get.back, child: const Text('Login')),
       ],
     );
   }
