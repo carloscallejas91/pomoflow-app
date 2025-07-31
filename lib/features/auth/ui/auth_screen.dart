@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_background_widget.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_text_widget.dart';
+import 'package:pomoflow/app/utils/app_validators.dart';
 import 'package:pomoflow/features/auth/controllers/auth_controller.dart';
 import 'package:pomoflow/app/ui/widgets/custom_text_field.dart';
 
@@ -74,12 +75,7 @@ class AuthScreen extends StatelessWidget {
                     hintText: 'seuemail@exemplo.com',
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value == null || !GetUtils.isEmail(value)) {
-                        return 'Por favor, insira um e-mail válido.';
-                      }
-                      return null;
-                    },
+                    validator: AppValidators.email,
                   ),
                   const SizedBox(height: 16),
                   Obx(
@@ -97,12 +93,7 @@ class AuthScreen extends StatelessWidget {
                         ),
                         onPressed: controller.togglePasswordVisibility,
                       ),
-                      validator: (value) {
-                        if (value == null || value.length < 6) {
-                          return 'A senha deve ter pelo menos 6 caracteres.';
-                        }
-                        return null;
-                      },
+                      validator: AppValidators.password,
                     ),
                   ),
                   Align(
