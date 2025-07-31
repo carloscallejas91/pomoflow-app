@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742479284222",
+    "project_id": "pomoflow-app",
+    "storage_bucket": "pomoflow-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742479284222:android:651e7a274ec25f902922af",
+        "android_client_info": {
+          "package_name": "br.app.pomoflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhiw_zZYNonN0Ha1ldE5-WzOWIxXUao2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
