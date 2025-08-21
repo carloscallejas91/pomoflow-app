@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pomoflow/app/routes/app_pages.dart';
 import 'package:pomoflow/app/services/snack_bar_service.dart';
 
 class AuthController extends GetxController {
@@ -28,20 +29,21 @@ class AuthController extends GetxController {
   }
 
   Future<void> signInWithEmail() async {
-    if (isFormValid()) return;
-
-    isLoading.value = true;
-
-    try {
-      await _auth.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-    } on FirebaseAuthException catch (e) {
-      snackBarService.showError(title: 'Erro de Autenticação', message: e.message);
-    } finally {
-      isLoading.value = false;
-    }
+    Get.offAllNamed(Routes.HOME);
+    // if (isFormValid()) return;
+    //
+    // isLoading.value = true;
+    //
+    // try {
+    //   await _auth.signInWithEmailAndPassword(
+    //     email: emailController.text.trim(),
+    //     password: passwordController.text.trim(),
+    //   );
+    // } on FirebaseAuthException catch (e) {
+    //   snackBarService.showError(title: 'Erro de Autenticação', message: e.message);
+    // } finally {
+    //   isLoading.value = false;
+    // }
   }
 
   void togglePasswordVisibility() {

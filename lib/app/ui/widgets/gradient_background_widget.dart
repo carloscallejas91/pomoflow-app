@@ -4,9 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:pomoflow/app/ui/theme/app_color_extensions.dart';
 
 class GradientBackgroundWidget extends StatelessWidget {
+  final PreferredSizeWidget? appBar;
+  final Widget? leading;
   final Widget child;
+  final Widget? bottomNavigationBar;
 
-  const GradientBackgroundWidget({super.key, required this.child});
+  const GradientBackgroundWidget({
+    super.key,
+    this.appBar,
+    this.leading,
+    required this.child,
+    this.bottomNavigationBar,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +55,13 @@ class GradientBackgroundWidget extends StatelessWidget {
             filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
             child: Container(decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.0))),
           ),
-          Scaffold(backgroundColor: Colors.transparent, body: child),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: appBar,
+            drawer: leading,
+            body: child,
+            bottomNavigationBar: bottomNavigationBar,
+          ),
         ],
       ),
     );

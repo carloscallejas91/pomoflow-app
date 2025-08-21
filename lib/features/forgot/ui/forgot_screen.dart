@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pomoflow/app/ui/constants/app_assets.dart';
 import 'package:pomoflow/app/ui/widgets/custom_text_field.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_background_widget.dart';
 import 'package:pomoflow/app/ui/widgets/gradient_text_widget.dart';
@@ -42,7 +43,7 @@ class ForgotScreen extends StatelessWidget {
   }
 
   Widget _buildHeader(ThemeData theme) {
-    return Image.asset('assets/images/img-logotipo.png', height: 45);
+    return Image.asset(AppAssets.logo, height: 45);
   }
 
   Widget _buildForm(ForgotController controller, ThemeData theme) {
@@ -62,7 +63,7 @@ class ForgotScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  GradientTextWidget(text: 'Recuperar ', gradientText: 'Senha'),
+                  GradientTextWidget(text: 'Recuperar ', gradientText: 'senha'),
                   SizedBox(height: 16),
                   Text(
                     'Digite seu e-mail abaixo para receber um link de redefinição de senha.',
