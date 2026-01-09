@@ -52,7 +52,11 @@ class AppColorExtensions extends ThemeExtension<AppColorExtensions> {
       warning: Color.lerp(warning, other.warning, t),
       onWarning: Color.lerp(onWarning, other.onWarning, t),
       gradientPrimary: Color.lerp(gradientPrimary, other.gradientPrimary, t),
-      gradientSecondary: Color.lerp(gradientSecondary, other.gradientSecondary, t),
+      gradientSecondary: Color.lerp(
+        gradientSecondary,
+        other.gradientSecondary,
+        t,
+      ),
       gradientTertiary: Color.lerp(gradientTertiary, other.gradientTertiary, t),
     );
   }

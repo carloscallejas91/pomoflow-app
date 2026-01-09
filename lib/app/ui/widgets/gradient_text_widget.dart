@@ -34,7 +34,11 @@ class GradientTextWidget extends StatelessWidget {
           ),
         GradientText(
           gradientText,
-          style: style ?? theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+          style:
+              style ??
+              theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
           colors: [theme.colorScheme.secondary, theme.colorScheme.tertiary],
         ),
       ],
