@@ -40,8 +40,12 @@ final lightTheme = ThemeData(
   inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(color: AppColors.lightTextSecondary),
     hintStyle: TextStyle(color: AppColors.lightTextSecondary),
-    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary)),
-    enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.lightBorder)),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.primary),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.lightBorder),
+    ),
   ),
   extensions: const <ThemeExtension<dynamic>>[
     AppColorExtensions(
@@ -90,8 +94,12 @@ final darkTheme = ThemeData(
   inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(color: AppColors.darkTextSecondary),
     hintStyle: TextStyle(color: AppColors.darkTextSecondary),
-    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary)),
-    enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.darkBorder)),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.primary),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppColors.darkBorder),
+    ),
   ),
   extensions: const <ThemeExtension<dynamic>>[
     AppColorExtensions(

@@ -30,17 +30,29 @@ class GradientBackgroundWidget extends StatelessWidget {
           Positioned(
             top: -100,
             left: -150,
-            child: _buildColorBlob(color: customColors.gradientTertiary!, height: 300, width: 300),
+            child: _buildColorBlob(
+              color: customColors.gradientTertiary!,
+              height: 300,
+              width: 300,
+            ),
           ),
           Positioned(
             top: -150,
             right: -150,
-            child: _buildColorBlob(color: customColors.gradientPrimary!, height: 350, width: 350),
+            child: _buildColorBlob(
+              color: customColors.gradientPrimary!,
+              height: 350,
+              width: 350,
+            ),
           ),
           Positioned(
             bottom: -50,
             left: -20,
-            child: _buildColorBlob(color: customColors.gradientSecondary!, height: 250, width: 250),
+            child: _buildColorBlob(
+              color: customColors.gradientSecondary!,
+              height: 250,
+              width: 250,
+            ),
           ),
           Positioned(
             bottom: -180,
@@ -53,7 +65,11 @@ class GradientBackgroundWidget extends StatelessWidget {
           ),
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
-            child: Container(decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.0))),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.0),
+              ),
+            ),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
@@ -67,7 +83,11 @@ class GradientBackgroundWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildColorBlob({required Color color, required double height, required double width}) {
+  Widget _buildColorBlob({
+    required Color color,
+    required double height,
+    required double width,
+  }) {
     return Container(
       height: height,
       width: width,

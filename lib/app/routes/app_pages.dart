@@ -1,29 +1,38 @@
-import 'package:get/get.dart';
-import 'package:pomoflow/features/auth/ui/auth_screen.dart';
-import 'package:pomoflow/features/create/create_binding.dart';
-import 'package:pomoflow/features/create/ui/create_screen.dart';
-import 'package:pomoflow/features/forgot/forgot_binding.dart';
-import 'package:pomoflow/features/forgot/ui/forgot_screen.dart';
-import 'package:pomoflow/features/home/home_binding.dart';
-import 'package:pomoflow/features/home/ui/home_screen.dart';
+﻿import 'package:get/get.dart';
+import 'package:pomoflow/modules/auth/bindings/auth_binding.dart';
+import 'package:pomoflow/modules/auth/pages/auth_page.dart';
+import 'package:pomoflow/modules/create/bindings/create_binding.dart';
+import 'package:pomoflow/modules/create/pages/create_page.dart';
+import 'package:pomoflow/modules/forgot/bindings/forgot_binding.dart';
+import 'package:pomoflow/modules/forgot/pages/forgot_page.dart';
+import 'package:pomoflow/modules/home/bindings/home_binding.dart';
+import 'package:pomoflow/modules/home/pages/home_page.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.AUTH;
+  static const initial = Routes.auth;
 
   static final List<GetPage<dynamic>> routes = [
-    GetPage(name: Routes.AUTH, page: () => const AuthScreen()),
     GetPage(
-      name: Routes.FORGOT_PASSWORD,
-      page: () => const ForgotScreen(),
+      name: Routes.auth,
+      page: () => const AuthPage(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: Routes.forgotPassword,
+      page: () => const ForgotPage(),
       binding: ForgotBinding(),
     ),
     GetPage(
-      name: Routes.CREATE_ACCOUNT,
-      page: () => const CreateScreen(),
+      name: Routes.createAccount,
+      page: () => const CreatePage(),
       binding: CreateBinding(),
     ),
-    GetPage(name: Routes.HOME, page: () => const HomeScreen(), binding: HomeBinding()),
+    GetPage(
+      name: Routes.home,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
+    ),
   ];
 }

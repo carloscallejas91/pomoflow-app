@@ -3,38 +3,48 @@ import 'package:get/get.dart';
 class AppValidators {
   AppValidators._();
 
+  static final _lowerCaseRegex = RegExp(r'[a-z]');
+  static final _upperCaseRegex = RegExp(r'[A-Z]');
+  static final _digitRegex = RegExp(r'[0-9]');
+  static final _specialCharRegex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
+
   static String? email(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'O campo de e-mail é obrigatório.';
-    }
-    if (!GetUtils.isEmail(value.trim())) {
+    final emptyError = notEmpty(
+      value,
+      message: 'O campo de e-mail é obrigatório.',
+    );
+    if (emptyError != null) return emptyError;
+
+    if (!GetUtils.isEmail(value!.trim())) {
       return 'Por favor, insira um e-mail válido.';
     }
     return null;
   }
 
   static String? strongPassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'O campo de senha é obrigatório.';
-    }
+    final emptyError = notEmpty(
+      value,
+      message: 'O campo de senha é obrigatório.',
+    );
+    if (emptyError != null) return emptyError;
 
-    if (value.length < 8) {
+    if (value!.length < 8) {
       return 'A senha deve ter no mínimo 8 caracteres.';
     }
 
-    if (!RegExp(r'[a-z]').hasMatch(value)) {
+    if (!_lowerCaseRegex.hasMatch(value)) {
       return 'Deve conter pelo menos uma letra minúscula.';
     }
 
-    if (!RegExp(r'[A-Z]').hasMatch(value)) {
+    if (!_upperCaseRegex.hasMatch(value)) {
       return 'Deve conter pelo menos uma letra maiúscula.';
     }
 
-    if (!RegExp(r'[0-9]').hasMatch(value)) {
+    if (!_digitRegex.hasMatch(value)) {
       return 'Deve conter pelo menos um número.';
     }
 
-    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
+    if (!_specialCharRegex.hasMatch(value)) {
       return 'Deve conter pelo menos um caractere especial.';
     }
 
@@ -42,10 +52,13 @@ class AppValidators {
   }
 
   static String? password(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'O campo de senha é obrigatório.';
-    }
-    if (value.length < 8) {
+    final emptyError = notEmpty(
+      value,
+      message: 'O campo de senha é obrigatório.',
+    );
+    if (emptyError != null) return emptyError;
+
+    if (value!.length < 8) {
       return 'A senha deve ter pelo menos 8 caracteres.';
     }
 
